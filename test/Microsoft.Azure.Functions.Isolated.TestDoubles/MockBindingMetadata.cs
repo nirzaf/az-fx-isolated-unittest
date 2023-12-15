@@ -9,6 +9,7 @@ public class MockBindingMetadata : BindingMetadata
         Direction = direction;
     }
 
+    public override string Name { get; }
     public override string Type { get; }
 
     public override BindingDirection Direction { get; }
