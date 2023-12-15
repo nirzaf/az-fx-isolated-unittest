@@ -14,4 +14,3 @@ Test doubles for Function App .NET 6 Isolated process model.
 ## test/MyFunctionApp.Tests
 
 Unit test project using XUNIT, MOQ to test MyFunctionApp > Function1
-
