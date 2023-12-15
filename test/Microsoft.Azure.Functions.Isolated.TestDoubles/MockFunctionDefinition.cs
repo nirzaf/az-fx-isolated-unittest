@@ -2,12 +2,13 @@
 using Microsoft.Azure.Functions.Worker;
 
 namespace Microsoft.Azure.Functions.Isolated.TestDoubles;
+
 public class MockFunctionDefinition : FunctionDefinition
 {
     public static readonly string DefaultPathToAssembly = typeof(MockFunctionDefinition).Assembly.Location;
     public static readonly string DefaultEntrypPoint = $"{nameof(MockFunctionDefinition)}.{nameof(DefaultEntrypPoint)}";
-    public static readonly string DefaultId = "TestId";
-    public static readonly string DefaultName = "TestName";
+    private static readonly string DefaultId = "TestId";
+    private static readonly string DefaultName = "TestName";
 
     public MockFunctionDefinition(
         string? functionId = null,
@@ -27,13 +28,13 @@ public class MockFunctionDefinition : FunctionDefinition
 
     public override ImmutableArray<FunctionParameter> Parameters { get; }
 
-    public override string PathToAssembly { get; } = DefaultPathToAssembly;
+    public override string PathToAssembly => DefaultPathToAssembly;
 
-    public override string EntryPoint { get; } = DefaultEntrypPoint;
+    public override string EntryPoint => DefaultEntrypPoint;
 
     public override string Id { get; } = DefaultId;
 
-    public override string Name { get; } = DefaultName;
+    public override string Name => DefaultName;
 
     public override IImmutableDictionary<string, BindingMetadata> InputBindings { get; }
 
@@ -46,7 +47,8 @@ public class MockFunctionDefinition : FunctionDefinition
     /// <param name="outputBindingCount">The number of output bindings to generate. Names will be of the format "TestOutput0", "TestOutput1", etc.</param>
     /// <param name="paramTypes">A list of types that will be used to generate the <see cref="Parameters"/>. Names will be of the format "Parameter0", "Parameter1", etc.</param>
     /// <returns>The generated <see cref="FunctionDefinition"/>.</returns>
-    public static FunctionDefinition Generate(int inputBindingCount = 0, int outputBindingCount = 0, params Type[] paramTypes)
+    public static FunctionDefinition Generate(int inputBindingCount = 0, int outputBindingCount = 0,
+        params Type[] paramTypes)
     {
         var inputs = new Dictionary<string, BindingMetadata>();
         var outputs = new Dictionary<string, BindingMetadata>();
@@ -68,14 +70,13 @@ public class MockFunctionDefinition : FunctionDefinition
         for (var i = 0; i < paramTypes.Length; i++)
         {
             var properties = new Dictionary<string, object>
-                {
-                    {"TestPropertyKey", "TestPropertyValue" }
-                };
+            {
+                { "TestPropertyKey", "TestPropertyValue" }
+            };
 
             parameters.Add(new FunctionParameter($"Parameter{i}", paramTypes[i], properties.ToImmutableDictionary()));
         }
 
         return new MockFunctionDefinition(inputBindings: inputs, outputBindings: outputs, parameters: parameters);
     }
-
 }

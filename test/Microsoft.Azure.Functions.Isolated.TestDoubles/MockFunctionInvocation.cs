@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Functions.Worker;
 
 namespace Microsoft.Azure.Functions.Isolated.TestDoubles;
+
 public class MockFunctionInvocation : FunctionInvocation
 {
     public MockFunctionInvocation(string id = "", string functionId = "")
@@ -20,5 +21,6 @@ public class MockFunctionInvocation : FunctionInvocation
 
     public override string FunctionId { get; } = Guid.NewGuid().ToString();
 
-    public override TraceContext TraceContext { get; } = new DefaultTraceContext(Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
+    public override TraceContext TraceContext { get; } =
+        new DefaultTraceContext(Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
 }

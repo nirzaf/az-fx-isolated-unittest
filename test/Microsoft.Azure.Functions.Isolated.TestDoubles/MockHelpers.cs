@@ -26,7 +26,6 @@ public static class MockHelpers
     private static FunctionContext CreateContext(ObjectSerializer? serializer = null)
     {
         var context = new MockFunctionContext();
-
         var services = new ServiceCollection();
         services.AddOptions();
         services.AddFunctionsWorkerCore();
@@ -37,7 +36,6 @@ public static class MockHelpers
         });
 
         context.InstanceServices = services.BuildServiceProvider();
-
         return context;
     }
 }
