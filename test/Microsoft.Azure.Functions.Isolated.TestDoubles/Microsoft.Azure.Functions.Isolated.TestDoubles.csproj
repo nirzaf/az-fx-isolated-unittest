@@ -9,9 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="1.4.0" />
-    <PackageReference Include="Microsoft.Azure.Core.NewtonsoftJson" Version="1.0.0" />
-    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="1.16.0" />
+    <PackageReference Include="Microsoft.Azure.Core.NewtonsoftJson" Version="2.0.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
   </ItemGroup>
   
 </Project>
